@@ -88,8 +88,15 @@ class Song extends Model
 
         $query->execute($parameters);
 
-        // fetch() is the PDO method that get exactly one result
-        return $query->fetch();
+        // chek if song exists 
+
+        if($query->rowCount() > 0){
+            // fetch() is the PDO method that get exactly one result
+            return $query->fetch();
+        }else{
+            return "Song does not exists !";
+        }
+
     }
 
     /**

@@ -3,6 +3,7 @@
     <!-- add song form -->
     <div>
         <h3>Edit a song</h3>
+        <?php if(is_object($song)): ?>
         <form action="<?php echo URL; ?>songs/updatesong" method="POST">
             <label>Artist</label>
             <input autofocus type="text" name="artist" value="<?php echo htmlspecialchars($song->artist, ENT_QUOTES, 'UTF-8'); ?>" required />
@@ -13,6 +14,10 @@
             <input type="hidden" name="song_id" value="<?php echo htmlspecialchars($song->id, ENT_QUOTES, 'UTF-8'); ?>" />
             <input type="submit" name="submit_update_song" value="Update" />
         </form>
+        <?php else: 
+            echo $song;
+            endif;
+        ?>
     </div>
 </div>
 
